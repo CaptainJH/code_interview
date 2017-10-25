@@ -24,6 +24,7 @@
     <ClInclude Include="linkedList.h" />
     <ClInclude Include="stackQueue.h" />
     <ClInclude Include="tree.h" />
+    <ClInclude Include="utility.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source.cpp" />
