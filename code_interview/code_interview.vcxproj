@@ -23,6 +23,7 @@
     <ClInclude Include="dynamicProgramming.h" />
     <ClInclude Include="linkedList.h" />
     <ClInclude Include="stackQueue.h" />
+    <ClInclude Include="tree.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source.cpp" />

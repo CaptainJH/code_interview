@@ -2,6 +2,7 @@
 #include "bitOperation.h"
 #include "LinkedList.h"
 #include "stackQueue.h"
+#include "tree.h"
 
 
 
@@ -35,4 +36,17 @@ int main()
 		auto ret = GetLongestConsecutiveNode(s0, s1);
 		std::cout << "Longest consecutive common: " << ret.s << std::endl;
 	}
+
+	auto treeRoot = new treeNode<int>(1);
+	auto rn1_0 = treeRoot->addLeft(2);
+	auto rn1_1 = treeRoot->addRight(3);
+	auto rn2_0 = rn1_0->addLeft(4);
+	auto rn2_1 = rn1_0->addRight(5);
+	auto rn2_2 = rn1_1->addLeft(6);
+	auto rn2_3 = rn1_1->addRight(7);
+	//auto rn3_0 = rn2_0->addLeft(7);
+	PrintTreeRecursive(treeRoot);
+	std::cout << std::endl;
+	PrintTreePreorder(treeRoot);
+	PrintTreeNoRecur(treeRoot);
 }
