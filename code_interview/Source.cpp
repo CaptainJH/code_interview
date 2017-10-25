@@ -38,15 +38,32 @@ int main()
 	}
 
 	auto treeRoot = new treeNode<int>(1);
-	auto rn1_0 = treeRoot->addLeft(2);
-	auto rn1_1 = treeRoot->addRight(3);
-	auto rn2_0 = rn1_0->addLeft(4);
-	auto rn2_1 = rn1_0->addRight(5);
-	auto rn2_2 = rn1_1->addLeft(6);
-	auto rn2_3 = rn1_1->addRight(7);
-	//auto rn3_0 = rn2_0->addLeft(7);
+	auto rn2 = treeRoot->addLeft(2);
+	auto rn3 = treeRoot->addRight(3);
+	auto rn4 = rn2->addRight(4);
+	rn2->addLeft(24);
+	auto rn5 = rn3->addLeft(5);
+	auto rn6 = rn3->addRight(6);
+	rn6->addLeft(100);
+	rn6->addRight(160);
+	auto rn7 = rn4->addLeft(7);
+	rn7->addLeft(78);
+	rn7->addRight(87);
+	auto rn8 = rn4->addRight(8);
+	auto rn9 = rn5->addLeft(9);
+	auto rn10 = rn5->addRight(10);
+	rn10->addRight(120);
+	auto rn11 = rn8->addRight(11);
+	auto rn12 = rn9->addLeft(12);
+	auto rn13 = rn11->addLeft(13);
+	auto rn14 = rn11->addRight(14);
+	auto rn15 = rn12->addLeft(15);
+	auto rn16 = rn12->addRight(16);
+	
 	PrintTreeRecursive(treeRoot);
 	std::cout << std::endl;
 	PrintTreePreorder(treeRoot);
 	PrintTreeNoRecur(treeRoot);
+
+	PrintTreeBorder(treeRoot);
 }

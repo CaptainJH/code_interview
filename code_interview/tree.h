@@ -2,6 +2,7 @@
 #include <iostream>
 #include <stack>
 #include <set>
+#include <vector>
 #include <list>
 #include <assert.h>
 
@@ -117,6 +118,99 @@ void PrintTreeNoRecur(treeNode<T>* node)
 	for (auto n : nodeList)
 	{
 		std::cout << n->value << ", ";
+	}
+
+	std::cout << std::endl;
+}
+
+template<class T>
+void PrintTreeBorder_PrintPreoder(treeNode<T>* node, std::vector<T>& bookKeeping, int currentLevel)
+{
+	if (bookKeeping.size() <= currentLevel || bookKeeping[currentLevel] == 0)
+	{
+		std::cout << node->value << ", ";
+		bookKeeping.push_back(1);
+	}
+	else if (!node->left && !node->right)
+	{
+		std::cout << node->value << ", ";
+	}
+
+	if (node->left)
+	{
+		PrintTreeBorder_PrintPreoder(node->left, bookKeeping, currentLevel + 1);
+	}
+
+	if (node->right)
+	{
+		PrintTreeBorder_PrintPreoder(node->right, bookKeeping, currentLevel + 1);
+	}
+}
+template<class T>
+void PrintTreeBorder_PrintPreoder2(treeNode<T>* node, std::vector<T>& bookKeeping, int currentLevel, std::vector<T>& ret)
+{
+	if (bookKeeping.size() <= currentLevel || bookKeeping[currentLevel] == 0)
+	{
+		ret.push_back(node->value);
+		bookKeeping.push_back(1);
+	}
+	else if (!node->left && !node->right)
+	{
+		ret.push_back(node->value);
+	}
+
+	if (node->left)
+	{
+		PrintTreeBorder_PrintPreoder2(node->left, bookKeeping, currentLevel + 1, ret);
+	}
+
+	if (node->right)
+	{
+		PrintTreeBorder_PrintPreoder2(node->right, bookKeeping, currentLevel + 1, ret);
+	}
+}
+template<class T>
+void revertTreeNode(treeNode<T>* node)
+{
+	auto temp = node->left;
+	node->left = node->right;
+	node->right = temp;
+
+	if (node->left)
+	{
+		revertTreeNode(node->left);
+	}
+
+	if (node->right)
+	{
+		revertTreeNode(node->right);
+	}
+}
+template<class T>
+void PrintTreeBorder(treeNode<T>* node)
+{
+	std::cout << node->value << ", ";
+
+	auto leftTree = node->left;
+	auto rightTree = node->right;
+	std::vector<T> bookKeeping;
+
+	if (leftTree)
+	{
+		PrintTreeBorder_PrintPreoder(leftTree, bookKeeping, 0);
+	}
+
+	if (rightTree)
+	{
+		revertTreeNode(rightTree);
+		bookKeeping.clear();
+		std::vector<T> ret;
+		PrintTreeBorder_PrintPreoder2(rightTree, bookKeeping, 0, ret);
+
+		for (auto it = ret.rbegin(); it != ret.rend(); ++it)
+		{
+			std::cout << *it << ", ";
+		}
 	}
 
 	std::cout << std::endl;
