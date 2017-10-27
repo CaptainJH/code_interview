@@ -4,6 +4,7 @@
 #include "stackQueue.h"
 #include "tree.h"
 #include "utility.h"
+#include "matrix.h"
 
 
 
@@ -67,4 +68,23 @@ int main()
 	PrintTreeNoRecur(treeRoot);
 
 	PrintTreeBorder(treeRoot);
+
+	std::vector<int> vv = { 0, 1, 2 };
+	auto listRoot = ConstructList(vv);
+	//PrintList(revertListWithStack(listRoot));
+	PrintList(revertList(listRoot));
+
+
+	std::vector<int> r0 = { 1, 2, 3, 4 };
+	std::vector<int> r1 = { 5, 6, 7, 8 };
+	std::vector<int> r2 = { 9, 10, 11, 12 };
+	std::vector<int> r3 = { 13, 14, 15, 16 };
+
+	matrix<int> mat(4, 4);
+	mat.setRow(0, r0);
+	mat.setRow(1, r1);
+	mat.setRow(2, r2);
+	mat.setRow(3, r3);
+	mat.PrintMatrix();
+	zigzagMatrixPrint(mat);
 }

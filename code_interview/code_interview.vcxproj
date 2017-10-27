@@ -22,6 +22,7 @@
     <ClInclude Include="bitOperation.h" />
     <ClInclude Include="dynamicProgramming.h" />
     <ClInclude Include="linkedList.h" />
+    <ClInclude Include="matrix.h" />
     <ClInclude Include="stackQueue.h" />
     <ClInclude Include="tree.h" />
     <ClInclude Include="utility.h" />
